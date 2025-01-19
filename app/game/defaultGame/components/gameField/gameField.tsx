@@ -193,6 +193,7 @@ export default function GameField() {
                         alt=""
                         width={100}
                         height={100}
+                        unoptimized
                     />
                 </div>
                 <div
@@ -210,6 +211,7 @@ export default function GameField() {
                             alt={""}
                             width={100}
                             height={100}
+                            unoptimized
                         />
                     </div>
                     <div className="border-b-4 border-third pb-4">
@@ -218,6 +220,7 @@ export default function GameField() {
                             alt={""}
                             width={100}
                             height={100}
+                            unoptimized
                         />
                     </div>
                     <div className="border-b-4 border-third pb-4">
@@ -226,6 +229,7 @@ export default function GameField() {
                             alt={""}
                             width={100}
                             height={100}
+                            unoptimized
                         />
                     </div>
                     <div className="border-b-4 border-third pb-4">
@@ -233,7 +237,7 @@ export default function GameField() {
                             src={`/skills/${spells[0]}.webp`}
                             alt={""}
                             width={100}
-                            height={100}
+                            unoptimized
                         />
                     </div>
                     <div className="border-b-4 border-third pb-4">
@@ -242,6 +246,7 @@ export default function GameField() {
                             alt={""}
                             width={100}
                             height={100}
+                            unoptimized
                         />
                     </div>
                     <div className="border-b-4 border-third pb-4">
@@ -250,6 +255,7 @@ export default function GameField() {
                             alt=""
                             width={100}
                             height={100}
+                            unoptimized
                         />
                     </div>
                 </div>
