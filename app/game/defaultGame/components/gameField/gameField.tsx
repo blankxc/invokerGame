@@ -162,7 +162,7 @@ export default function GameField() {
             <div className="flex flex-col items-center">
                 <div className="bg-second">
                     <Image
-                        src={`/skills/${currentRandomSpell ? currentRandomSpell : 'invoke_icon'}.jpg`}
+                        src={`/skills/${currentRandomSpell ? currentRandomSpell : 'invoke_icon'}.webp`}
                         alt=""
                         width={100}
                         height={100}
@@ -179,7 +179,7 @@ export default function GameField() {
                     onKeyDown={(e) => isGameActive ? keydownHandler(e.key) : ''}>
                     <div className="border-b-4 border-third pb-4">
                         <Image
-                            src={`/spheres/${spheres[0]}.jpg`}
+                            src={`/spheres/${spheres[0]}.webp`}
                             alt={""}
                             width={100}
                             height={100}
@@ -187,7 +187,7 @@ export default function GameField() {
                     </div>
                     <div className="border-b-4 border-third pb-4">
                         <Image
-                            src={`/spheres/${spheres[1]}.jpg`}
+                            src={`/spheres/${spheres[1]}.webp`}
                             alt={""}
                             width={100}
                             height={100}
@@ -195,7 +195,7 @@ export default function GameField() {
                     </div>
                     <div className="border-b-4 border-third pb-4">
                         <Image
-                            src={`/spheres/${spheres[2]}.jpg`}
+                            src={`/spheres/${spheres[2]}.webp`}
                             alt={""}
                             width={100}
                             height={100}
@@ -203,7 +203,7 @@ export default function GameField() {
                     </div>
                     <div className="border-b-4 border-third pb-4">
                         <Image
-                            src={`/skills/${spells[0]}.jpg`}
+                            src={`/skills/${spells[0]}.webp`}
                             alt={""}
                             width={100}
                             height={100}
@@ -211,7 +211,7 @@ export default function GameField() {
                     </div>
                     <div className="border-b-4 border-third pb-4">
                         <Image
-                            src={`/skills/${spells[1]}.jpg`}
+                            src={`/skills/${spells[1]}.webp`}
                             alt={""}
                             width={100}
                             height={100}
@@ -219,7 +219,7 @@ export default function GameField() {
                     </div>
                     <div className="border-b-4 border-third pb-4">
                         <Image
-                            src="/invoke_icon.jpg"
+                            src="/invoke_icon.webp"
                             alt=""
                             width={100}
                             height={100}
