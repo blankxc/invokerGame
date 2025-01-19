@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import type { PluginAPI } from "tailwindcss/types/config";
 
 export default {
     content: [
@@ -47,7 +48,7 @@ export default {
         },
     },
     plugins: [
-        function ({ addUtilities }) {
+        function ({ addUtilities}: PluginAPI) {
             const newUtilities = {
                 ".time-bar": {
                     width: "200px",
@@ -87,7 +88,11 @@ export default {
                     },
                 },
             };
-            addUtilities(newUtilities, ["responsive", "hover"]);
+            addUtilities(newUtilities, {
+                respectPrefix: true, 
+                respectImportant: true,
+              });
+              
         },
     ],
 } satisfies Config;
