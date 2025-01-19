@@ -135,6 +135,33 @@ export default function GameField() {
         }
     }
 
+    useEffect(() => {
+        const imagesToPreload: string[] = [
+            '/invoke_icon.webp',
+            '/skills/alacrity.webp',
+            '/skills/chaos_meteor.webp',
+            '/skills/cold_snap.webp',
+            '/skills/deafening_blast.webp',
+            '/skills/EMP.webp',
+            '/skills/forge_spirit.webp',
+            '/skills/ghost_walk.webp',
+            '/skills/ice_wall.webp',
+            '/skills/invoke_icon.webp',
+            '/skills/plug.webp',
+            '/skills/sun_strike.webp',
+            '/skills/tornado.webp',
+            '/spheres/exort.webp',
+            '/spheres/Wex.webp',
+            '/spheres/quas.webp',
+            '/spheres/plug.webp',
+        ]
+
+        imagesToPreload.forEach((srcc) => {
+            const img: HTMLImageElement = new window.Image()
+            img.src = srcc
+        })
+    }, [])
+
     function findCombination(): void {
         spellsCombinations.forEach((value, key) => {
             const isEqual: boolean = compareArrays(key, spheres);
