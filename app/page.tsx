@@ -1,5 +1,4 @@
 import Link from "next/link";
-import DefaultGame from "./game/defaultGame/page";
 
 export default function Home() {
     return (
