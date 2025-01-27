@@ -52,7 +52,7 @@ export default function GameField({setIsNeedAwaitCircle}: game) {
     }
 
     function gameTimer() {
-        setTimeout(gameEnd, 10000)
+        setTimeout(gameEnd, 30000)
     }
 
     async function gameEnd() {
