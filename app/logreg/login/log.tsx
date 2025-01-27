@@ -15,7 +15,7 @@ export default function Login({setResCode, setIsNeedResCode}: log) {
 
     async function loginHandler(e: FormEvent) {
         e.preventDefault()
-        const response = await fetch('http://localhost:3000/queries/loginHandler', {
+        const response = await fetch('/queries/loginHandler', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
