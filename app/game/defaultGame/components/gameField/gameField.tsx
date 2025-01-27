@@ -147,7 +147,7 @@ export default function GameField({setIsNeedAwaitCircle}: game) {
             currentKey === "Ц"
         ) {
             setSpheres((prev) => {
-                return ["wex", ...prev];
+                return ["Wex", ...prev];
             });
         }
         if (
