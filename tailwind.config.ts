@@ -9,18 +9,43 @@ export default {
     ],
     theme: {
         extend: {
+            keyframes: {
+                firstCircle: {
+                    '0%': {backgroundColor: '#a26ac5'},
+                    '50%': {transform: 'translateX(100%)', backgroundColor: '#7d6bebff'},
+                    '75%': {backgroundColor: '##cd9cecff'},
+                    '100%': {backgroundColor: '#a26ac5'}
+                },
+                secondCircle: {
+                    '50%': {transform: 'translateX(-100%)'}
+                }
+            },
+            animation: {
+                firstCircle: 'firstCircle 1.5s linear infinite',
+                secondCircle: 'firstCircle 1.5s linear infinite'
+            },
+            fontFamily: {
+                'montserrat': ['Montserrat']
+            },
             borderColor: {
                 second: "#15141b",
                 third: "#4db997",
                 fourth: "#110f18",
                 fifth: "#36896f",
+                sixth: '#a26ac5',
+                'lighten-second': '#2b2938',
             },
             border: {
                 "1": "1px",
             },
+            borderRadius: {
+                '1/2': '50%'
+            },
             textColor: {
                 third: "#4db997",
                 fifth: "#36896f",
+                sixth: '#a26ac5',
+                'lighten-second': '#2b2938',
             },
             text: {
                 "main-900": "#211d26",
@@ -30,21 +55,29 @@ export default {
                 "main-800": "#27192a",
                 "main-700": "#2c152e",
                 "main-600": "#311132",
+                sixth: '#a26ac5',
+                'lighten-second': '#2b2938',
             },
             backgroundColor: {
                 second: "#15141b",
                 third: "#4db997",
                 fourth: "#110f18",
                 fifth: "#36896f",
+                sixth: '#a26ac5',
                 "main-900": "#211d26",
                 "main-800": "#27192a",
                 "main-700": "#2c152e",
                 "main-600": "#311132",
+                'lighten-second': '#2b2938',
+                'popup': 'hsla(0,0%,0%,0.808)'
             },
             colors: {
                 background: "var(--background)",
                 foreground: "var(--foreground)",
             },
+            height: {
+                'main': '850px'
+            }
         },
     },
     plugins: [

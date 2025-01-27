@@ -1,15 +1,50 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { SetStateAction, useEffect, useRef, useState } from "react";
 import { spellsCombinations } from "./combinations";
 
-export default function GameField() {
+interface game {
+    setIsNeedAwaitCircle: React.Dispatch<SetStateAction<boolean>>
+}
+
+export default function GameField({setIsNeedAwaitCircle}: game) {
     const [isGameActive, setIsGameActive] = useState<boolean>(false);
     const focusElRef = useRef<HTMLDivElement | null>(null);
     const [spheres, setSpheres] = useState<string[]>(["plug", "plug", "plug"]);
     const [spells, setSpells] = useState<string[]>(["plug", "plug"]);
+    const [score, setScore] = useState<number>(0)
+    const [isNeedFinally, setIsNeedFinally] = useState<boolean>(false)
+    const [record, setRecord] = useState<number>(0)
+    const [userId, setUserId] = useState<string>('')
+
+    useEffect(() => {
+        async function getUserRecord() {
+            setIsNeedAwaitCircle(true)
+            const response = await fetch('/queries/cookieDecryptor', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include'
+            })
+            if (response.ok) {
+                const data = await response.json()
+                const result = data.message
+                setRecord(+result[0].default_record)
+                setUserId(result[0].id)
+            }
+            setIsNeedAwaitCircle(false)
+        }
+        getUserRecord()
+    }, [record, setIsNeedAwaitCircle])
+
+    const scoreRef = useRef<number>(0)
+
+    
 
     function gameRules() {
+        setIsNeedFinally(false)
+        setScore(0)
         focusElRef.current?.focus();
         setIsGameActive(true);
         gameTimer()
@@ -17,16 +52,36 @@ export default function GameField() {
     }
 
     function gameTimer() {
-        setTimeout(gameEnd, 30000)
+        setTimeout(gameEnd, 10000)
     }
 
-    function gameEnd() {
+    async function gameEnd() {
         setIsGameActive(false);
         setSpheres(['plug', 'plug', 'plug'])
+        const finalRecord = scoreRef.current
         setSpells(['plug', 'plug'])
+        setRecord(+record)
+        if (finalRecord > record) {
+            const response = await fetch('/queries/updateRecord', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({userId: userId, record: finalRecord})
+            })
+            if (response.ok) {
+                setRecord(finalRecord)
+            }
+        }
         setCurrentRandomSpell('')
         setGuessedWord(0)
+        setIsNeedFinally(true)
     }
+
+    useEffect(() => {
+        scoreRef.current = score
+    }, [score])
+
 
     useEffect(() => {
         if (spheres.length > 3) {
@@ -64,7 +119,7 @@ export default function GameField() {
     const [currentRandomSpell, setCurrentRandomSpell] = useState<string>('')
     const [guessedWord, setGuessedWord] = useState<number>(0)
 
-    function randomizer() {
+    function randomizer(): void {
         const randomNumber = Math.floor(Math.random() * randomSpellsStartState.length);
         if (guessedWord !== randomNumber) {
             setCurrentRandomSpell(randomSpellsStartState[randomNumber]);
@@ -120,6 +175,7 @@ export default function GameField() {
             currentKey === "В"
         ) {
             if (spells[0] === currentRandomSpell) {
+                setScore((current) => current + 1)
                 randomizer()
             }
         }
@@ -130,10 +186,19 @@ export default function GameField() {
             currentKey === "А"
         ) {
             if (spells[1] === currentRandomSpell) {
+                setScore((current) => current + 1)
                 randomizer()
             }
         }
     }
+
+    // useEffect(() => {
+    //     window.addEventListener('keydown', function(e) {
+    //         if ((e.key === '~' || e.key === '`' || e.key === 'ё' || e.key === 'Ё') && isGameActive === false) {
+    //             gameRules()
+    //         }
+    //     })
+    // }, [])
 
     useEffect(() => {
         const imagesToPreload: string[] = [
@@ -185,8 +250,10 @@ export default function GameField() {
     }
 
     return (
-        <section className="text-white w-1/2 m-auto mt-60">
-            <div className="flex flex-col items-center">
+        <section className="text-white w-1/2 m-auto mt-64 mb-64">
+            <p className={`text-center mb-20 text-xl transition-all duration-500 ${isNeedFinally ? 'absolute left-1/2 -translate-x-1/2 translate-y-32 scale-150' : ""}`}>{score}</p>
+            <p>record: {record}</p>
+            <div className={`flex flex-col items-center transition-all duration-200 ${isNeedFinally ? 'translate-y-96 opacity-0 z-0' : ''}`}>
                 <div className="bg-second">
                     <Image
                         src={`/skills/${currentRandomSpell ? currentRandomSpell : 'invoke_icon'}.webp`}
@@ -237,6 +304,7 @@ export default function GameField() {
                             src={`/skills/${spells[0]}.webp`}
                             alt={""}
                             width={100}
+                            height={100}
                             unoptimized
                         />
                     </div>
@@ -259,14 +327,14 @@ export default function GameField() {
                         />
                     </div>
                 </div>
-                {isGameActive ? '' : 
+            </div>
+                {isGameActive ? '' :
                 <button
-                className="bg-second border border-second px-10 py-2 mt-5 transitio-all duration-500 hover:border-third hover:rounded-2xl rounded"
+                className="block m-auto bg-second border border-second px-10 py-2 mt-5 transition-all duration-500 hover:border-third hover:rounded-2xl rounded"
                 onClick={gameRules}>
                     play
                 </button>
                 }
-            </div>
         </section>
     );
 }

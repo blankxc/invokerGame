@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap');
 
 :root {
   --background: #ffffff;
@@ -12,5 +13,17 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+}
+
+body::-webkit-scrollbar {
+  width: 3px; /* Ширина всего элемента навигации */
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #4db997;
 }
 
