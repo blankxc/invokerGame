@@ -114,6 +114,7 @@ export default function GameField({setIsNeedAwaitCircle}: game) {
         "ice_wall",
         "sun_strike",
         "tornado",
+        'invoke_icon'
     ];
 
     const [currentRandomSpell, setCurrentRandomSpell] = useState<string>('')
