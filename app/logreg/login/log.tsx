@@ -15,7 +15,7 @@ export default function Login({setResCode, setIsNeedResCode}: log) {
 
     async function loginHandler(e: FormEvent) {
         e.preventDefault()
-        const response = await fetch('/queries/loginHandler', {
+        const response = await fetch('https://invokergame.netlify.app/queries/loginHandler', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
