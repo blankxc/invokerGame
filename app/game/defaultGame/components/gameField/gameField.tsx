@@ -114,7 +114,6 @@ export default function GameField({setIsNeedAwaitCircle}: game) {
         "ice_wall",
         "sun_strike",
         "tornado",
-        'invoke_icon'
     ];
 
     const [currentRandomSpell, setCurrentRandomSpell] = useState<string>('')
@@ -203,7 +202,7 @@ export default function GameField({setIsNeedAwaitCircle}: game) {
 
     useEffect(() => {
         const imagesToPreload: string[] = [
-            '/invoke_icon.webp',
+            '/Invoke_icon.webp',
             '/skills/alacrity.webp',
             '/skills/chaos_meteor.webp',
             '/skills/cold_snap.webp',
@@ -212,7 +211,7 @@ export default function GameField({setIsNeedAwaitCircle}: game) {
             '/skills/forge_spirit.webp',
             '/skills/ghost_walk.webp',
             '/skills/ice_wall.webp',
-            '/skills/invoke_icon.webp',
+            '/skills/Invoke_icon.webp',
             '/skills/plug.webp',
             '/skills/sun_strike.webp',
             '/skills/tornado.webp',
@@ -257,7 +256,7 @@ export default function GameField({setIsNeedAwaitCircle}: game) {
             <div className={`flex flex-col items-center transition-all duration-200 ${isNeedFinally ? 'translate-y-96 opacity-0 z-0' : ''}`}>
                 <div className="bg-second">
                     <Image
-                        src={`/skills/${currentRandomSpell ? currentRandomSpell : 'invoke_icon'}.webp`}
+                        src={`/skills/${currentRandomSpell ? currentRandomSpell : 'Invoke_icon'}.webp`}
                         alt=""
                         width={100}
                         height={100}
@@ -320,7 +319,7 @@ export default function GameField({setIsNeedAwaitCircle}: game) {
                     </div>
                     <div className="border-b-4 border-third pb-4">
                         <Image
-                            src="/invoke_icon.webp"
+                            src="/Invoke_icon.webp"
                             alt=""
                             width={100}
                             height={100}
