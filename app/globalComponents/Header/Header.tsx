@@ -28,10 +28,10 @@ export default function Header() {
 
     return (
         <header className="border-b border-third bg-main-900">
-            <nav className="flex justify-between items-center">
-                <p className="pl-5 text-xl text-white">Invoker game</p>
+            <nav className="flex justify-between items-center flex-wrap">
+                <p className="pl-5 text-xl text-white text-center">Invoker game</p>
                 <ul className="flex gap-10 pr-16 items-center">
-                    <li>
+                    <li className="flex-grow">
                         <Link
                             href="https://github.com/blankxc/invokerGame"
                             onMouseMove={() => setIsMouseOnGit(true)}
@@ -61,21 +61,21 @@ export default function Header() {
                             </svg>
                         </Link>
                     </li>
-                    <li>
+                    <li className="flex-grow text-center">
                         <Link
                             href={"/"}
                             className="text-white block p-3 transition-all hover:text-third">
                             Home
                         </Link>
                     </li>
-                    {/* <li>
+                    <li className="flex-grow text-center">
                         <Link
-                            href={"/Leaderboard"}
+                            href={"/Leaderboard/defaultMode"}
                             className="text-white block p-3 transition-all hover:text-third">
                             Leaderboard
                         </Link>
-                    </li> */}
-                    <li>
+                    </li>
+                    <li className="flex-grow text-center">
                         {username ? (
                             <Link
                                 href="/account"

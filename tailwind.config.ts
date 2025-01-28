@@ -18,11 +18,17 @@ export default {
                 },
                 secondCircle: {
                     '50%': {transform: 'translateX(-100%)'}
+                },
+                trueSphere: {
+                    '0%': {backgroundColor: '#a26ac5'},
+                    '50%': {width: '80%'},
+                    '100%': {width: '100%'},
                 }
             },
             animation: {
                 firstCircle: 'firstCircle 1.5s linear infinite',
-                secondCircle: 'firstCircle 1.5s linear infinite'
+                secondCircle: 'firstCircle 1.5s linear infinite',
+                trueSphere: 'trueSphere 0.2s ease-out both',
             },
             fontFamily: {
                 'montserrat': ['Montserrat']
@@ -64,6 +70,8 @@ export default {
                 fourth: "#110f18",
                 fifth: "#36896f",
                 sixth: '#a26ac5',
+                seventh: '#7f46a3',
+                eighth: '#623380',
                 "main-900": "#211d26",
                 "main-800": "#27192a",
                 "main-700": "#2c152e",
